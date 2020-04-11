@@ -1,5 +1,5 @@
-import { Observable as ObservableType } from 'rxjs'
-import { Observable, Observer } from 'rxjs-observable'
+import { Observable, Observer } from 'rxjs'
+// import { Observable, Observer } from 'rxjs-observable'
 
 export type ALL = '__ALL__'
 const ALL: ALL = '__ALL__'
@@ -55,14 +55,14 @@ export class Emitter<Messages extends object> {
   /**
    * Subscribe to an event
    */
-  on<K extends keyof Messages>(key: K): ObservableType<Messages[K]> {
+  on<K extends keyof Messages>(key: K): Observable<Messages[K]> {
     return this.createChannel(key) as any
   }
 
   /**
    * Subscribe to all events
    */
-  all(): ObservableType<Messages[keyof Messages]> {
+  all(): Observable<Messages[keyof Messages]> {
     return this.createChannel(ALL) as any
   }
 
